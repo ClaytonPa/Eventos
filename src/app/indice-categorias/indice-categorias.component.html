@@ -1,0 +1,45 @@
+<h2>Categorias</h2>
+
+<button mat-flat-button color="primary" routerLink="/categorias/crear">
+    Crear
+</button>
+
+<table *ngIf="eventos && eventos.length" mat-table [dataSource]="eventos" class="mat-elevation-z8 elementos-ajustados">
+    <ng-container matColumnDef="Titulo">
+        <th mat-header-cell *matHeaderCellDef>Titulo</th>
+        <td mat-cell *matCellDef="let evento "> {{evento.titulo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Descripcion">
+        <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+        <td mat-cell *matCellDef="let evento "> {{evento.descripcion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="FechaInicio">            
+        <th mat-header-cell *matHeaderCellDef>FechaInicio</th>      
+        <td mat-cell *matCellDef="let evento "> {{evento.fechaInicio | date:'shortDate'}} </td>
+    </ng-container>  
+
+    <ng-container matColumnDef="FechaFin">            
+        <th mat-header-cell *matHeaderCellDef>FechaFin</th>      
+        <td mat-cell *matCellDef="let evento "> {{evento.fechaFin | date:'shortDate'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="TipoEvento">            
+        <th mat-header-cell *matHeaderCellDef>TipoEvento</th>               
+        <td mat-cell *matCellDef="let evento "> {{evento.tipoEvento}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let evento ">
+            <a mat-flat-button color ="primary" routerLink="/categorias/editar/{{evento.id}}">Editar</a>
+            <button mat-flat-button color="warn" (click)="borrar(evento.id)">Eliminar</button>
+        </td>
+    </ng-container>     
+
+    <tr mat-header-row *matHeaderRowDef="columnsSet"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsSet;"></tr>
+    
+
+</table>

@@ -1,0 +1,38 @@
+
+<h2>{{titulo}}</h2>
+
+<form (submit)="guardarCambios()" [formGroup]="form">
+    <mat-form-field>    
+        <mat-label>Nombre</mat-label>
+        <input [formControl]="form.controls.Titulo" matInput/>
+    </mat-form-field>
+
+    <mat-form-field>    
+        <mat-label>Descripcion</mat-label>
+        <input [formControl]="form.controls.Descripcion" matInput/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Tipo de Evento</mat-label>
+        <input matInput type="number" [formControl]="form.controls.TipoEvento" />
+      </mat-form-field>
+    
+      <mat-form-field>
+        <mat-label>Fecha de Inicio</mat-label>
+        <input matInput [matDatepicker]="pickerInicio" [formControl]="form.controls.FechaInicio" />
+        <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <mat-label>Fecha de Fin</mat-label>
+        <input matInput [matDatepicker]="pickerFin" [formControl]="form.controls.FechaFin" />
+        <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFin></mat-datepicker>
+      </mat-form-field>
+
+    <div>
+        <button type="submit" mat-flat-button color="primary">Guardar cambios</button>
+        <a mat-stroked-button color="warn" routerLink="/categorias">Cancelar</a>
+    </div>
+</form>
